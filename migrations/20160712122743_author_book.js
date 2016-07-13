@@ -1,0 +1,11 @@
+
+exports.up = function(knex, Promise) {
+  return knex.schema.createTable('author_book', function(table){
+    table.integer('author_id').references('author.id').onDelete('CASCADE');
+    table.integer('book_id').references('book.id').onDelete('CASCADE');
+  });
+};
+
+exports.down = function(knex, Promise) {
+  return knex.schema.dropTable('author_book');
+};
