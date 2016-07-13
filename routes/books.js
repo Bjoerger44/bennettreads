@@ -48,5 +48,26 @@ router.get('/books/:id/deletebook', function(req, res, next) {
  });
 });
 
+//Edit Book//
+
+router.get('/books/:id/editbook',
+function(req, res, next){
+  db.findBookById(req.params.id).then(function(data){
+    res.render('editbook', {book: data});
+  });
+});
+
+router.post('/books/:id/editbook', function(req, res, next){
+  var book = {
+    title: req.body.title,
+    genre: req.body.genre,
+    description: req.body.description,
+    image: req.body.image
+  };
+  db.editBook(req.params.id, book).then(function(){
+    res.redirect('/books');
+  });
+});
+
 
 module.exports = router;

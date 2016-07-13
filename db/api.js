@@ -15,5 +15,8 @@ module.exports = {
   },
   deletebook: function(id){
     return knex('book').where({id: id}).del();
-  }
+  },
+  editBook: function(id, book) {
+    return knex('book').where({id: id}).update(book);
+  },
 };
