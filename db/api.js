@@ -10,7 +10,9 @@ module.exports = {
   addBook: function(book) {
     return knex('book').insert(book);
   },
-  
+  grabBook: function(id) {
+    return knex('book').where({id: id}).select().first();
+  },
   deletebook: function(id){
     return knex('book').where({id: id}).del();
   }

@@ -29,7 +29,7 @@ router.get('/books/addbooks', function(req, res, next){
     });
   });
 
-    //Show book details//
+//Show book details//
 
     router.get('/books/:id', function(req, res, next){
       console.log(req.params.id);
@@ -37,6 +37,7 @@ router.get('/books/addbooks', function(req, res, next){
         res.render('bookdetail', {book: data});
       });
     });
+
 //Delete Book//
 
 router.get('/books/:id/deletebook', function(req, res, next) {
