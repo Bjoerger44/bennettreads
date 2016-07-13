@@ -9,5 +9,9 @@ module.exports = {
   },
   addBook: function(book) {
     return knex('book').insert(book);
+  },
+  
+  deletebook: function(id){
+    return knex('book').where({id: id}).del();
   }
 };
