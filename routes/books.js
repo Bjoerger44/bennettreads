@@ -4,7 +4,7 @@ var db = require('../db/api');
 
 //Show books //
 
-router.get('/books', function(req, res, next) {
+router.get('/', function(req, res, next) {
   db.listbooks().then(function(data){
     res.render('listbooks', {books: data});
   });
@@ -13,11 +13,11 @@ router.get('/books', function(req, res, next) {
 
 //Add a book//
 
-router.get('/books/addbooks', function(req, res, next){
+router.get('/addbooks', function(req, res, next){
   res.render('addbook');
 });
 
-  router.post('/books/addbooks', function(req, res, next){
+  router.post('/addbooks', function(req, res, next){
     var book = {
       title: req.body.title,
       genre: req.body.genre,
@@ -31,7 +31,7 @@ router.get('/books/addbooks', function(req, res, next){
 
 //Show book details//
 
-    router.get('/books/:id', function(req, res, next){
+    router.get('/:id', function(req, res, next){
       console.log(req.params.id);
       db.findBookById(req.params.id).then(function(data){
         res.render('bookdetail', {book: data});
@@ -40,7 +40,7 @@ router.get('/books/addbooks', function(req, res, next){
 
 //Delete Book//
 
-router.get('/books/:id/deletebook', function(req, res, next) {
+router.get('/:id/deletebook', function(req, res, next) {
  db.deletebook(req.params.id).then(function(){
    res.redirect('/books');
  }).catch(function(error) {
@@ -50,14 +50,14 @@ router.get('/books/:id/deletebook', function(req, res, next) {
 
 //Edit Book//
 
-router.get('/books/:id/editbook',
+router.get('/:id/editbook',
 function(req, res, next){
   db.findBookById(req.params.id).then(function(data){
     res.render('editbook', {book: data});
   });
 });
 
-router.post('/books/:id/editbook', function(req, res, next){
+router.post('/:id/editbook', function(req, res, next){
   var book = {
     title: req.body.title,
     genre: req.body.genre,
