@@ -19,4 +19,23 @@ module.exports = {
   editBook: function(id, book) {
     return knex('book').where({id: id}).update(book);
   },
+  listAuthors: function() {
+    return knex('author').select();
+  },
+
+  addAuthor: function(author) {
+    return knex('author').insert(author);
+  },
+
+  getAuthor: function(id) {
+    return knex('author').where({ id: id }).select().first();
+  },
+
+  deleteAuthor: function(id) {
+    return knex('author').where({ id: id }).del();
+  },
+
+  editAuthor: function(id, author) {
+    return knex('author').where({id: id}).update(author);
+  }
 };

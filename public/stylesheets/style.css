@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -10,5 +10,5 @@ body {
   background-color: grey;
 }
 .bookcover {
-  width: 75%; 
+  width: 75%;
 }
